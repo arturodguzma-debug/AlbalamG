@@ -26,7 +26,7 @@ st.set_page_config(
             st.write("Copia la dirección de nuestra billetera en tu **Trust Wallet**:")
 
             # 0x9e513F8C4E5398CDe9f474D28A336A77CF56D01EAQUÍ VA TU DIRECCIÓN (Puedes editarla después si gustas)
-            st.code("0x9e513F8C4E5398CDe9f474D28A336A77CF56D01E"), language="text") 
+            st.code("0x9e513F8C4E5398CDe9f474D28A336A77CF56D01E"), language="text"
 
             st.warning("⚠️ **IMPORTANTE:** Usa únicamente la red **BNB Smart Chain (BEP20)**. Las comisiones son mínimas y el flujo es instantáneo.")
 
