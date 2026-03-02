@@ -18,6 +18,6 @@ st.info(t["pago"])
 st.code("0x9e513F8C4E5398CDe9f474D28A336A77CF56D01E", language="text")
 
 if st.button(t["boton"]):
-    st.balloons()
-        st.success(t["exito"])
+st.balloons()
+st.success(t["exito"])
     
