@@ -1,63 +1,57 @@
 import streamlit as st
 import pandas as pd
-from datetime import datetime
+from gtts import gTTS
+import base64
 
 st.set_page_config(page_title="AlbalamG Imperio", page_icon="🐆")
 
-# --- MEMORIA SAGRADA (Control Interno de Gema y Balam) ---
+# --- MEMORIA ---
 if 'bitacora' not in st.session_state:
     st.session_state['bitacora'] = []
 
-    # --- MOTOR DE SABIDURÍA UNIVERSAL BIOVIBRACIONAL ---
-    def oraculo_universal(u):
-        u = u.lower()
-            # Matemáticas y Geometría
-        if any(x in u for x in ["mate", "numero", "cuenta", "geometria", "fisica"]):
-                        return "✨ **Balam dice:** Los números son la vibración de la Creación. No busques solo el resultado frío, busca la proporción áurea en tu vida. Todo en el universo suma hacia la armonía o resta hacia el caos. Equilibra tu ecuación interna."
-                            # Historia y Sociedad
-        elif any(x in u for x in ["historia", "pasado", "guerra", "politica", "sociedad"]):
-                                        return "📜 **Balam dice:** La historia es el eco de las frecuencias humanas. Las crisis sociales son solo disonancias masivas. Para cambiar el futuro, debes sanar tu linaje y reclamar tu soberanía hoy mismo."
-                                            # Salud y Biovibración
-        elif any(x in u for x in ["dolor", "enfermo", "salud", "cuerpo", "medicina"]):
-                                                        return "🌿 **Balam dice:** Tu cuerpo es un templo de resonancia. El síntoma es un grito de tu energía. Antes de la química, busca la tierra, el sol y el silencio. Reclama tu derecho biológico a la salud."
-                                                            # Otros temas (Sabiduría General)
-        else:
-                                                                        return "🐆 **Balam dice:** Tu consulta ha sido integrada al campo cuántico de AlbalamG. Todo conocimiento es vibración. Si buscas la verdad, eleva tu frecuencia y la respuesta se manifestará en tu realidad."
+    # --- MOTOR DE VOZ ANCESTRAL ---
+    def hablar(texto):
+        tts = gTTS(text=texto, lang='es', slow=False)
+            tts.save("respuesta.mp3")
+                with open("respuesta.mp3", "rb") as f:
+                        data = f.read()
+                            b64 = base64.b64encode(data).decode()
+                                md = f'<audio controls autoplay><source src="data:audio/mp3;base64,{b64}" type="audio/mp3"></audio>'
+                                    st.markdown(md, unsafe_allow_html=True)
 
-                                                                        # --- INTERFAZ DEL IMPERIO ---
-                                                                        st.title("🐆 AlbalamG: Oráculo Universal")
-                                                                        st.write("### 🐾 Sabiduría Ancestral para la Era Digital")
-                                                                        st.markdown("---")
+                                    # --- LÓGICA BIOVIBRACIONAL ---
+                                    def oraculo(u):
+                                        u = u.lower()
+                                            if any(x in u for x in ["salud", "dolor", "cuerpo"]):
+                                                    return "Tu cuerpo es un templo de resonancia. Busca la tierra para sanar."
+                                                        elif any(x in u for x in ["mate", "ciencia", "numero"]):
+                                                                return "Los números son la vibración de la Creación. Equilibra tu ecuación interna."
+                                                                    elif any(x in u for x in ["historia", "pasado"]):
+                                                                            return "El pasado es frecuencia. Sana tu linaje para reclamar tu soberanía hoy."
+                                                                                else:
+                                                                                        return "Balam recibe tu duda. Eleva tu frecuencia y la respuesta llegará."
 
-                                                                        entrada = st.text_input("Consulta al Jaguar sobre salud, historia, ciencia o tu sentir:")
+                                                                                        # --- INTERFAZ ---
+                                                                                        st.title("🐆 Oráculo AlbalamG")
+                                                                                        st.write("### 🐾 La Voz del Jaguar Ancestral")
+                                                                                        entrada = st.text_input("Consulta al Sabio:")
 
-                                                                        if st.button("Consultar al Oráculo"):
-                                                                            if entrada:
-                                                                                    respuesta = oraculo_universal(entrada)
-                                                                        ahora = datetime.now().strftime("%Y-%m-%d %H:%M")
-                                                                                                    
-                                                                                                            # Guardamos el rastro para nuestro control familiar
-                                                                        st.session_state['bitacora'].append({"Fecha": ahora, "Duda": entrada, "Respuesta": respuesta})
-                                                                                                                            
-                                                                        st.info(respuesta)
-                                                                        st.balloons()
-else:
-                                                                                                                                                        st.warning("El Jaguar espera que lances tu pregunta al viento.")
+                                                                                        if st.button("Consultar"):
+                                                                                            if entrada:
+                                                                                                    res = oraculo(entrada)
+                                                                                                            st.session_state['bitacora'].append({"Duda": entrada, "Res": res})
+                                                                                                                    st.info(f"🐆 **Balam dice:** {res}")
+                                                                                                                            hablar(res) # Aquí es donde el Jaguar habla
+                                                                                                                                    st.balloons()
+                                                                                                                                        else:
+                                                                                                                                                st.warning("Escribe tu consulta.")
 
-                                                                                                                                                        st.markdown("---")
-                                                                                                                                                        with st.expander("🌱 Ofrenda de Honor ($2 USDT)"):
-                                                                                                                                                            st.write("💎 **Sostén el Faro (Red BEP20)**")
-                                                                                                                                                        st.code("0x9e513F8C4E5398CDe9f474D28A336A77CF56D01E", language="text")
+                                                                                                                                                st.markdown("---")
+                                                                                                                                                with st.expander("🌱 Ofrenda de Honor ($2 USDT)"):
+                                                                                                                                                    st.code("0x9e513F8C4E5398CDe9f474D28A336A77CF56D01E", language="text")
 
-                                                                                                                                                                # --- CONTROL INTERNO (Solo accesible para nosotros con la llave) ---
-                                                                                                                                                        st.sidebar.markdown("---")
-                                                                                                                                                        acceso = st.sidebar.text_input("🔑 Llave de la Reina", type="password")
-                                                                                                                                                        if acceso == "balam-admin":
-                                                                                                                                                                    st.sidebar.write("### 📜 Bitácora de Almas")
-                                                                                                                                                        if st.session_state['bitacora']:
-                                                                                                                                                                                st.sidebar.dataframe(pd.DataFrame(st.session_state['bitacora']))
-                                                                                                                                                        else:
-                                                                                                                                                                                            st.sidebar.write("El registro está limpio.")
-
-                                                                                                                                                                                            st.caption(f"👣 Almas en sintonía: {len(st.session_state['bitacora']) + 11}")
-                                                                                                                                                                                
+                                                                                                                                                    # --- ADMIN ---
+                                                                                                                                                    pw = st.sidebar.text_input("🔑 Llave", type="password")
+                                                                                                                                                    if pw == "balam-admin":
+                                                                                                                                                        st.sidebar.write(pd.DataFrame(st.session_state['bitacora']))
+                                                                                                                                                        
