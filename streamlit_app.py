@@ -25,27 +25,27 @@ textos = {
                                                 }
                                                 }
 
-                                                t = textos.get(idioma, textos["Español"])
+t = textos.get(idioma, textos["Español"])
 
                                                 # 3. Interfaz del Portal
-                                                st.title(t["titulo"])
-                                                st.subheader(t["sub"])
-                                                st.markdown("---")
+st.title(t["titulo"])
+st.subheader(t["sub"])
+st.markdown("---")
 
                                                 # Botón de Consulta (El primero para no ahuyentar)
-                                                if st.button(t["boton_consulta"]):
-                                                    st.info("🚀 Redirigiendo al Oráculo de Consultas... (Aquí pondremos el link de tu otra plataforma)")
+                                                # if st.button(t["boton_consulta"]):
+st.info("🚀 Redirigiendo al Oráculo de Consultas... (Aquí pondremos el link de tu otra plataforma)")
 
-                                                    st.write(t["msg"])
+st.write(t["msg"])
 
                                                     # Sección de Ofrenda (Elegante y no invasiva)
-                                                    with st.expander(t["boton_pago"]):
+with st.expander(t["boton_pago"]):
                                                         st.write("💎 **Red BEP20 (BNB Smart Chain)**")
-                                                            st.code("0x9e513F8C4E5398CDe9f474D28A336A77CF56D01E", language="text")
-                                                                if st.button("✅ Hecho"):
+                                                        st.code("0x9e513F8C4E5398CDe9f474D28A336A77CF56D01E", language="text")
+                                                        if st.button("✅ Hecho"):
                                                                         st.balloons()
-                                                                                st.success(t["exito"])
+                                                                        st.success(t["exito"])
 
-                                                                                st.markdown("---")
-                                                                                st.caption("AlbalamG | Uruapan - 2026")
-                                                                        
+                                                                        st.markdown("---")
+                                                                        st.caption("AlbalamG | Uruapan - 2026")
+                                                        
