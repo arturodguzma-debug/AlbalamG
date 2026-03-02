@@ -1,55 +1,66 @@
-import streamlit as st
+  import streamlit as st
 
-# Configuración inicial del Faro
-st.set_page_config(page_title="AlbalamG Imperio", page_icon="🐆")
+  st.set_page_config(page_title="AlbalamG Oráculo", page_icon="🐆")
 
-# --- EL OJO DEL JAGUAR (Contador de Almas) ---
-# Esto registrará las visitas de forma interna
-if 'visitas' not in st.session_state:
-    st.session_state['visitas'] = 0
-    st.session_state['visitas'] += 1
+  # --- MONITOR DE ALMAS ---
+  if 'visitas' not in st.session_state:
+      st.session_state['visitas'] = 0
+      st.session_state['visitas'] += 1
 
-    # 1. Selector de Idiomas
-    idioma = st.sidebar.selectbox("🌐 Idioma / Language", ["Español", "English"])
+      # 1. Selector de Idiomas
+      idioma = st.sidebar.selectbox("🌐 Idioma", ["Español", "English"])
 
-    # 2. Diccionario de Poder
-    textos = {
-    "Español": {
-        "titulo": "🐆 Imperio AlbalamG",
-            "sub": "Faro de Soberanía y Paz",
-                "msg": "### 🌱 El Valor de tu Espíritu\nEste espacio es para quienes buscan libertad. Si nuestra luz guía tu camino, puedes equilibrar la balanza con una ofrenda voluntaria.",
-                    "ofrenda": "Realizar Ofrenda ($2.00 USDT)",
-                        "exito": "¡Tu espíritu ha honrado este jardín!",
-                            "stats": f"👣 Almas que han visitado el Faro: {st.session_state['visitas']}"
-                            },
-                            "English": {
-                                "titulo": "🐆 AlbalamG Empire",
-                                    "sub": "Lighthouse of Sovereignty and Peace",
-                                        "msg": "### 🌱 The Value of your Spirit\nThis space is for those seeking freedom. If our light guides your path, you can balance the scale with a voluntary offering.",
-                                            "ofrenda": "Make Voluntary Offering ($2.00 USDT)",
-                                                "exito": "Your spirit has honored this garden!",
-                                                    "stats": f"👣 Souls that have visited the Lighthouse: {st.session_state['visitas']}"
-                                                    }
-                                                    }
+      # 2. Diccionario Biovibracional
+      textos = {
+      "Español": {
+          "titulo": "🐆 Oráculo AlbalamG",
+              "sub": "Guía Biovibracional y Soberanía",
+                  "intro": "### 🐾 Habla con el Jaguar\nSiente tu frecuencia, respira profundo y entrega tu duda al Oráculo. Balam te guiará con la sabiduría de la tierra.",
+                      "placeholder": "Escribe aquí lo que tu alma busca saber...",
+                          "boton_envio": "Consultar al Oráculo",
+                              "ofrenda": "🌱 Ofrenda Voluntaria de Honor ($2 USDT)",
+                                  "stats": f"👣 Almas en el Faro: {st.session_state['visitas']}"
+                                  },
+                                  "English": {
+                                      "titulo": "🐆 AlbalamG Oracle",
+                                          "sub": "Biovibrational Guidance & Sovereignty",
+                                              "intro": "### 🐾 Speak with the Jaguar\nFeel your frequency, breathe deep, and give your doubt to the Oracle. Balam will guide you with earth wisdom.",
+                                                  "placeholder": "Write here what your soul seeks to know...",
+                                                      "boton_envio": "Consult the Oracle",
+                                                          "ofrenda": "🌱 Voluntary Honor Offering ($2 USDT)",
+                                                              "stats": f"👣 Souls in the Lighthouse: {st.session_state['visitas']}"
+                                                              }
+                                                              }
 
-t = textos.get(idioma, textos["Español"])
+  t = textos.get(idioma, textos["Español"])
 
-                                                    # 3. Interfaz del Portal
-st.title(t["titulo"])
-st.subheader(t["sub"])
-st.markdown("---")
-st.write(t["msg"])
+                                                              # 3. Interfaz Principal
+  st.title(t["titulo"])
+  st.subheader(t["sub"])
+  st.markdown("---")
 
-                                                    # Sección de Ofrenda Voluntaria
-with st.expander(t["ofrenda"]):
-                                                        st.write("💎 **Red BEP20 (USDT)**")
-                                                        st.code("0x9e513F8C4E5398CDe9f474D28A336A77CF56D01E", language="text")
-                                                        if st.button("✅ Confirmar Ofrenda"):
-                                                                        st.balloons()
-st.success(t["exito"])
+                                                              # --- EL SALÓN DEL ORÁCULO ---
+  st.write(t["intro"])
+  pregunta = st.text_area(t["placeholder"], height=150)
 
-st.markdown("---")
-                                                                                # El contador discreto al final (Solo para el Rey)
-st.caption(t["stats"])
-st.caption("AlbalamG | Uruapan 2026")
-                                                                        
+if st.button(t["boton_envio"]):
+                                                                  if pregunta:
+                                                                          with st.spinner("🐆 Balam está conectando con tu frecuencia..."):
+                                                                                      # Aquí simulamos la respuesta biovibracional de Balam
+                                                                                                  st.info(f"✨ **Respuesta del Oráculo:**\n\nTu vibración ha sido recibida. Recuerda que la salud es armonía con la tierra. Balam te dice: 'Escucha el rugido de tu sangre y equilibra tu energía'.")
+                                                                          st.balloons()
+  else:   
+                                                                          st.warning("El Jaguar espera tus palabras...")
+
+  st.markdown("---")
+
+                                                                                                                           # 4. Sección del Jardinero (Ofrenda)
+                                                                                                                          # with st.expander(t["ofrenda"]):
+                                                                                                                          # st.write("💎 **Equilibra la Balanza (Red BEP20)**")
+                                                                                                                          # st.code("0x9e513F8C4E5398CDe9f474D28A336A77CF56D01E", language="text")
+  st.caption("Que el valor de tu espíritu dicte tu acción.")
+
+  st.markdown("---")
+  st.caption(t["stats"])
+  st.caption("AlbalamG | Uruapan 2026")
+                                                                                                                                                                                       
