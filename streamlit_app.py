@@ -9,11 +9,11 @@ u = st.text_input("Consulta al Jaguar:")
 
 if st.button("Consultar"):
     if u:
-            st.info("🐆 Balam dice: Tu cuerpo es un templo de resonancia. Busca la tierra para sanar.")
-            st.balloons()
+        st.info("🐆 Balam dice: Tu cuerpo es un templo de resonancia. Busca la tierra para sanar.")
     else:
-            st.warning("Escribe tu consulta.")
+     st.warning("Escribe tu consulta.")
+st.balloons()
 
-            st.markdown("---")
-            st.code("0x9e513F8C4E5398CDe9f474D28A336A77CF56D01E", language="text")
+st.markdown("---")
+st.code("0x9e513F8C4E5398CDe9f474D28A336A77CF56D01E", language="text")
             
