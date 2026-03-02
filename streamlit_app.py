@@ -20,21 +20,20 @@ textos = {
                                         "exito": "Your spirit has honored this garden!"
                                         }
                                         }
+t = textos.get(idioma, textos["Español"])
 
-                                        t = textos.get(idioma, textos["Español"])
+st.title(t["titulo"])
+st.subheader(t["sub"])
+st.markdown("---")
+st.write(t["msg"])
 
-                                        st.title(t["titulo"])
-                                        st.subheader(t["sub"])
-                                        st.markdown("---")
-                                        st.write(t["msg"])
-
-                                        with st.expander(t["ofrenda"]):
+with st.expander(t["ofrenda"]):
                                             st.write("💎 **Red BEP20 (USDT)**")
-                                                st.code("0x9e513F8C4E5398CDe9f474D28A336A77CF56D01E", language="text")
-                                                    if st.button("✅ Confirmar Ofrenda"):
+st.code("0x9e513F8C4E5398CDe9f474D28A336A77CF56D01E", language="text")
+if st.button("✅ Confirmar Ofrenda"):
                                                             st.balloons()
-                                                                    st.success(t["exito"])
+                                                            st.success(t["exito"])
 
-                                                                    st.markdown("---")
-                                                                    st.caption("AlbalamG | Uruapan 2026")
+                                                            st.markdown("---")
+                                                            st.caption("AlbalamG | Uruapan 2026")
                                                             
