@@ -23,7 +23,7 @@ if llave == "balam-admin":
                                                     st.title("🐆 AlbalamG Imperio Universal")
                                                     st.header("🚧 Recalibrando la Frecuencia 🚧")
                                                             
-                                                    st.write("""
+        st.write("""
                                                                     ### Estimado Soberano:
                                                                         El Faro está en proceso de **Mantenimiento Biovibratorio**. 
                                                                             Estamos integrando la sabiduría del *Todo* (Ciencia, Arte, PNL y Tecnología) 
@@ -32,6 +32,6 @@ if llave == "balam-admin":
                                                                                         **Regresa pronto. La luz será más intensa.**
                                                                                             """)
                                                                                                 
-                                                    st.markdown("---")
-                                                    st.info("📩 El Imperio no se detiene, se transforma.")
+st.markdown("---")
+st.info("📩 El Imperio no se detiene, se transforma.")
                                     
